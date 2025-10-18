@@ -1,0 +1,25 @@
+{
+  "name": "excersice-code",
+  "version": "1.0.0",
+  "main": "index.js",
+
+  "scripts": {
+   "commit": "git add . && cz" , 
+    "prepare": "husky"
+    
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "commitizen": "^4.3.1",
+    "cz-conventional-changelog": "^3.3.0",
+    "husky": "^9.1.7"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
