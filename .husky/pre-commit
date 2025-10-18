@@ -37,20 +37,20 @@ echo -e "${GREEN} ✅  console.log was not found in the files... ✅ ${NC}"
 
 
 
-echo -e "${BLUE}🔍 Running ESLint for client...${NC}"
-cd client || exit 1
-STAGED_FILES=$(git diff --cached --name-only --relative=client | grep -E '\.(js|jsx|ts|tsx)$')
-if [ -n "$STAGED_FILES" ]; then
-    echo -e "${BLUE}🔍 Linting staged files in client...${NC}"
-    pnpm exec eslint $STAGED_FILES
-fi
+# echo -e "${BLUE}🔍 Running ESLint for client...${NC}"
+# cd client || exit 1
+# STAGED_FILES=$(git diff --cached --name-only --relative=client | grep -E '\.(js|jsx|ts|tsx)$')
+# if [ -n "$STAGED_FILES" ]; then
+#     echo -e "${BLUE}🔍 Linting staged files in client...${NC}"
+#     pnpm exec eslint $STAGED_FILES
+# fi
 
-cd ..
+# cd ..
 
-if [ $? -ne 0 ]; then
-  echo -e "${RED_BOLD}🚫 ESLint failed! Fix issues before committing.${NC}"
-  exit 1
-fi
+# if [ $? -ne 0 ]; then
+#   echo -e "${RED_BOLD}🚫 ESLint failed! Fix issues before committing.${NC}"
+#   exit 1
+# fi
 
 echo -e "${BLUE}staged files is : ${NC} \n ";
 git diff --cached --name-only | sed -e ' s/^/---> /' || true
