@@ -1,17 +1,14 @@
 {
-  "name": "excersice-code",
+  "name": "canva-clone",
   "version": "1.0.0",
-  "main": "index.js",
-
-  "scripts": {
-   "commit": "git add . && cz" , 
-    "prepare": "husky"
-    
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "description": "",
+  "main": "index.js",
+  "scripts": {
+    "commit": "git add . && cz",
+    "client": "cd apps/client && pnpm run dev",
+    "storybook": "cd apps/client && pnpm run storybook",
+    "prepare": "husky"
+  },
   "devDependencies": {
     "commitizen": "^4.3.1",
     "cz-conventional-changelog": "^3.3.0",
@@ -21,5 +18,9 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
-  }
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.12.4"
 }
