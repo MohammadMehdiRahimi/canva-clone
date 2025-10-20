@@ -12,7 +12,7 @@
     @apply bg-transparent  text-base-content;
     @media (hover: hover) {
       &:hover {
-        @apply bg-base-25;
+        @apply bg-base-content;
       }
     }
   }
@@ -176,6 +176,10 @@
   }
 
   /* size and shape */
+  &.btn-2xs {
+    @apply h-4  px-1;
+    font-size: 0.68rem;
+  }
   &.btn-xs {
     @apply h-6 px-2;
     font-size: 0.75rem;
@@ -192,6 +196,10 @@
     @apply h-16 px-6;
     font-size: 1.125rem;
   }
+  &.btn-xlg {
+    @apply h-20 px-7;
+    font-size: 1.25rem;
+  }
   &.btn-wide {
     @apply w-64 flex-nowrap;
   }
@@ -199,6 +207,9 @@
     @apply w-full;
   }
   &.btn-square {
+    &:where(.btn-2xs) {
+      @apply h-4 w-4 p-0;
+    }
     &:where(.btn-xs) {
       @apply h-6 w-6 p-0;
     }

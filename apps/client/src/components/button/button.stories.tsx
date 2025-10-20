@@ -80,6 +80,9 @@ export const OutlineStateButtons: Story = {
 export const ButtonSizes: Story = {
   render: () => (
     <div className="flex gap-4">
+      <Button variant="neutral" size="xtiny">
+        xTiny
+      </Button>
       <Button variant="neutral" size="tiny">
         Tiny
       </Button>
@@ -91,6 +94,9 @@ export const ButtonSizes: Story = {
       </Button>
       <Button variant="neutral" size="large">
         Large
+      </Button>
+      <Button variant="neutral" size="xlarge">
+        xLarge
       </Button>
     </div>
   ),

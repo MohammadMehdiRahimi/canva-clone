@@ -6,15 +6,44 @@
   "keepExistingTerminals": false,
   "sessions": {
     "default": [
-      {
-        "name": "server",
-        "autoExecuteCommands": true,
-        "icon": "server",
-        "color": "terminal.ansiYellow",
-        "commands": [
-          "cd apps/server"
-        ]
-      },
+      [
+        {
+          "name": "api-getway",
+          "autoExecuteCommands": true,
+          "icon": "info",
+          "color": "terminal.ansiYellow",
+          "commands": [
+            "cd apps/server/api-getway"
+          ]
+        },
+        {
+          "name": "upload-service",
+          "autoExecuteCommands": true,
+          "icon": "cloud-upload",
+          "color": "terminal.ansiYellow",
+          "commands": [
+            "cd apps/server/upload-service"
+          ]
+        },
+        {
+          "name": "design-service",
+          "autoExecuteCommands": true,
+          "icon": "debug-stackframe",
+          "color": "terminal.ansiYellow",
+          "commands": [
+            "cd apps/server/design-service"
+          ]
+        },
+        {
+          "name": "subscription-service",
+          "autoExecuteCommands": true,
+          "icon": "person-add",
+          "color": "terminal.ansiYellow",
+          "commands": [
+            "cd apps/server/subscription-service"
+          ]
+        }
+      ],
       [
         {
           "name": "client",

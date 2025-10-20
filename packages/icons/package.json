@@ -4,13 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "rename-svg": "node scripts/rename-icons.cjs",
     "clean-icons": "rimraf src/components",
-    "generate-icons": "pnpm clean-icons && svgr --icon --typescript --filename-case kebab --svg-props width=24,height=24 --replace-attr-values \"#000=currentColor,#fff=currentColor\" --out-dir src/components svgs"
+    "generate-icons": "pnpm clean-icons && pnpm rename-svg && svgr --config-file .svgrrc.js svgs"
   },
   "keywords": [],
-  "exports":{
-    "default":"./src/components/index.ts"
-  } , 
+  "exports": {
+    "default": "./src/components/index.ts"
+  },
   "author": "",
   "license": "ISC",
   "packageManager": "pnpm@10.12.4",
@@ -19,7 +20,10 @@
     "react-dom": "19.1.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.28.4",
+    "@babel/traverse": "^7.28.4",
     "@svgr/cli": "^8.1.0",
+    "@svgr/core": "8.1.0",
     "rimraf": "^6.0.1",
     "typescript": "^5.9.3"
   }

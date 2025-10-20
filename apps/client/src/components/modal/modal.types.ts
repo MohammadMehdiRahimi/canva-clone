@@ -1,27 +1,29 @@
 import { FC, ReactNode } from "react";
+import { Size } from "../types/size.type";
+
+type ModalProps = {
+  children: ReactNode;
+  open?: boolean;
+  title?: string;
+  size?: Exclude<Size, "xtiny" | "tiny">;
+};
 type ModalContextType = {
   isOpen: boolean;
   setIsOpen: (v: boolean) => void;
+  isFullScreen: boolean;
+  setIsFullScreen: (v: boolean) => void;
+  title?: string;
+  size?: string;
 };
-type ModalCompnentBaseProps = {
+
+type ModalIntersectProps = {
   children?: ReactNode;
   className?: string;
 };
 
-type ModalHeaderProps = ModalCompnentBaseProps & {
-  title?: string;
-};
-type ModalType = FC<{ children: ReactNode; open?: boolean }> & {
-  Trigger: FC<ModalCompnentBaseProps>;
-  Header: FC<ModalCompnentBaseProps>;
+type ModalType = FC<ModalProps> & {
+  Trigger: FC<ModalIntersectProps>;
   Content: FC<{ children: ReactNode }>;
-  Footer: FC<ModalCompnentBaseProps>;
-  Body: FC<{ children: ReactNode }>;
 };
 
-export type {
-  ModalContextType,
-  ModalCompnentBaseProps,
-  ModalHeaderProps,
-  ModalType,
-};
+export type { ModalContextType, ModalIntersectProps, ModalType, ModalProps };

@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "commit": "git add . && cz",
+    "commit": "pnpm exec lint-staged && cz",
+    "lint": "pnpm -r run lint",
     "client": "cd apps/client && pnpm run dev",
     "storybook": "cd apps/client && pnpm run storybook",
     "prepare": "husky"
@@ -12,7 +13,11 @@
   "devDependencies": {
     "commitizen": "^4.3.1",
     "cz-conventional-changelog": "^3.3.0",
-    "husky": "^9.1.7"
+    "eslint": "^9.38.0",
+    "eslint-plugin-react": "^7.37.5",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.4",
+    "typescript-eslint": "^8.46.1"
   },
   "config": {
     "commitizen": {
@@ -22,5 +27,22 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "packageManager": "pnpm@10.12.4"
+  "packageManager": "pnpm@10.12.4",
+  "lint-staged": {
+    "apps/client/**/*.{ts,tsx}": [
+      "pnpm --filter=client lint:staged"
+    ],
+    "apps/server/api-getway/**/*.{ts,tsx,js,jsx}": [
+      "pnpm --filter=api-getway lint:staged"
+    ],
+    "apps/server/design-service/**/*.{ts,tsx,js,jsx}": [
+      "pnpm --filter=design-servicer lint:staged"
+    ],
+    "apps/server/subscription-service/**/*.{ts,tsx,js,jsx}": [
+      "pnpm --filter=subscription-service lint:staged"
+    ],
+    "apps/server/upload-service/**/*.{ts,tsx,js,jsx}": [
+      "pnpm --filter=upload-service lint:staged"
+    ]
+  }
 }

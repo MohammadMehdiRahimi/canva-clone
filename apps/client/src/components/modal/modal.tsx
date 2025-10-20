@@ -3,18 +3,20 @@
 import React, {
   createContext,
   FC,
-  ReactNode,
   useContext,
   useEffect,
   useState,
 } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Close7, FullScreen } from "@/canvaClone/icons";
 import {
-  ModalCompnentBaseProps,
+  ModalIntersectProps,
   ModalContextType,
+  ModalProps,
   ModalType,
 } from "./modal.types";
 import clsx from "clsx";
+import { Button } from "../button";
 
 /* --------------------------------- context -------------------------------- */
 const ModalContext = createContext<ModalContextType | null>(null);
@@ -24,11 +26,18 @@ export const useModal = () => {
   return ctx;
 };
 
-const ModalBase: FC<{ children: ReactNode; open: boolean }> = ({
-  children,
-  open = false,
-}) => {
+const ModalBase: FC<ModalProps> = ({ children, open = false, title, size }) => {
+  type ModalSizeKey = NonNullable<ModalProps["size"]>;
+
+  const setSize: Record<ModalSizeKey, string> = {
+    small: "max-w-xs",
+    normal: "max-w-sm",
+    large: "max-w-md",
+    xlarge: "max-w-2xl",
+  };
+
   const [isOpen, setIsOpen] = useState<boolean>(open || false);
+  const [isFullScreen, setIsFullScreen] = useState<boolean>(false);
   useEffect(() => {
     if (open == true) {
       setIsOpen((prev) => !prev);
@@ -37,6 +46,10 @@ const ModalBase: FC<{ children: ReactNode; open: boolean }> = ({
   const value: ModalContextType = {
     setIsOpen,
     isOpen,
+    title,
+    size: size ? setSize[size] : "max-w-lg",
+    isFullScreen,
+    setIsFullScreen,
   };
   return (
     <ModalContext.Provider value={value}>{children}</ModalContext.Provider>
@@ -44,7 +57,7 @@ const ModalBase: FC<{ children: ReactNode; open: boolean }> = ({
 };
 
 /* ------------------------------- components ------------------------------- */
-const ModalTrigger: React.FC<ModalCompnentBaseProps> = ({
+const ModalTrigger: React.FC<ModalIntersectProps> = ({
   children,
   className,
 }) => {
@@ -56,36 +69,52 @@ const ModalTrigger: React.FC<ModalCompnentBaseProps> = ({
   );
 };
 
-const ModalHeader: React.FC<ModalCompnentBaseProps> = ({ children }) => {
+const ModalHeader: React.FC<ModalIntersectProps> = ({ className }) => {
+  const { title, setIsOpen, setIsFullScreen, isFullScreen } = useModal();
+  if (!title) return;
+
   return (
-    <div className="">
-      <div className=""></div>
-      <div className="">{children}</div>
-      <div className=""></div>
+    <div className={` p-1 px-3 flex justify-between max-w-2x ${className}`}>
+      <div className="">{title}</div>
+      <div className="flex items-center">
+        <Button
+          variant="default"
+          shape="square"
+          size="xtiny"
+          onClick={() => setIsOpen(false)}
+        >
+          <Close7 size={10} />
+        </Button>
+        <Button
+          variant="default"
+          shape="square"
+          size="xtiny"
+          onClick={() => setIsFullScreen(!isFullScreen)}
+        >
+          <FullScreen size={10} />
+        </Button>
+      </div>
     </div>
   );
 };
 
-const ModalFooter: React.FC<ModalCompnentBaseProps> = ({
+const ModalContent: React.FC<ModalIntersectProps> = ({
   children,
   className,
 }) => {
-  const classes = clsx(className);
-  return <div className={classes}>{children}</div>;
-};
-const ModalBody: FC<{ children: ReactNode }> = ({ children }) => {
-  return <div className="px-6 py-4 text-sm bg-white">{children}</div>;
-};
-
-const ModalContent: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const { isOpen, setIsOpen } = useModal();
-
+  const { isOpen, setIsOpen, size, isFullScreen } = useModal();
+  const classes = clsx(
+    "relative w-full  overflow-hidden rounded-lg shadow-lg bg-white",
+    size,
+    isFullScreen && "min-h-screen min-w-screen",
+    className
+  );
   return (
     <AnimatePresence>
       {isOpen && (
         <>
           <motion.div
-            className="fixed inset-0 bg-black/60 backdrop-blur-2xl "
+            className="fixed inset-0 bg-black/60 backdrop-blur-xl"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -100,12 +129,9 @@ const ModalContent: React.FC<{ children: ReactNode }> = ({ children }) => {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
           >
-            <div
-              className={
-                "relative w-full max-w-lg overflow-hidden rounded-lg shadow-lg"
-              }
-            >
-              {children}
+            <div className={classes}>
+              <ModalHeader />
+              <div className="p-2">{children}</div>
             </div>
           </motion.div>
         </>
@@ -115,9 +141,8 @@ const ModalContent: React.FC<{ children: ReactNode }> = ({ children }) => {
 };
 
 // --------------- combine --------------
-export const Modal = ModalBase as ModalType;
+const Modal = ModalBase as ModalType;
 Modal.Trigger = ModalTrigger;
-Modal.Header = ModalHeader;
 Modal.Content = ModalContent;
-Modal.Footer = ModalFooter;
-Modal.Body = ModalBody;
+
+export default Modal;
