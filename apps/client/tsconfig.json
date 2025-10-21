@@ -29,6 +29,6 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "postcss.config.mjs"
-  ],
+, "src/providers/nextauth-provider.tsط"  ],
   "exclude": ["node_modules"]
 }

@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import clsx from "clsx";
-import { sizeClasses } from "../utility/string";
+import { sizeClasses } from "@/components/utility/string";
 import { LoadingProps } from "./loading.type";
 
 export const Loading: React.FC<LoadingProps> = ({

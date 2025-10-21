@@ -8,9 +8,16 @@ export default defineConfig([
     files: ["**/*.{js,mjs,cjs,ts,mts,cts}"],
     plugins: { js },
     extends: ["js/recommended"],
-    rules: { "no-console": "error" },
+    rules: { "no-console": "warn" },
     ignores: ["node_modules/"],
+
     languageOptions: {
+      parser: tseslint.parser,
+      parserOptions: {
+        tsconfigRootDir: import.meta.dirname,
+        project: true,
+      },
+
       globals: globals.browser,
     },
   },

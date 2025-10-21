@@ -1,25 +1,52 @@
-// For more info, see https://github.com/storybookjs/eslint-plugin-storybook#configuration-flat-config-format
-import storybook from "eslint-plugin-storybook";
+import js from "@eslint/js/src/index.js";
+import tseslint from "typescript-eslint";
+import nextPlugin from "@next/eslint-plugin-next";
+import storybookPlugin from "eslint-plugin-storybook";
+import globals from "globals";
 
-import { dirname } from "path";
-import { fileURLToPath } from "url";
-import { FlatCompat } from "@eslint/eslintrc";
+export default tseslint.config(
+  {
+    ignores: [
+      "node_modules/",
+      ".next/",
+      "out/",
+      "build/",
+      ".storybook/",
+      "next-env.d.ts",
+      "eslint.config.js",
+    ],
+  },
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+  js.configs.recommended,
 
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-});
+  ...tseslint.configs.recommended,
 
-const eslintConfig = [...compat.extends("next/core-web-vitals", "next/typescript"), {
-  ignores: [
-    "node_modules/**",
-    ".next/**",
-    "out/**",
-    "build/**",
-    "next-env.d.ts",
-  ],
-}, ...storybook.configs["flat/recommended"]];
+  {
+    plugins: {
+      "@next/next": nextPlugin,
+    },
+    rules: {
+      ...nextPlugin.configs.recommended.rules,
+      ...nextPlugin.configs["core-web-vitals"].rules,
+      "react/react-in-jsx-scope": "off",
+    },
+  },
 
-export default eslintConfig;
+  ...storybookPlugin.configs["flat/recommended"],
+
+  {
+    files: ["**/*.{ts,tsx}"],
+    languageOptions: {
+      parser: tseslint.parser,
+      parserOptions: {
+        tsconfigRootDir: import.meta.dirname,
+        project: true,
+      },
+      globals: {
+        ...globals.browser,
+        ...globals.node,
+      },
+    },
+    rules: {},
+  }
+);

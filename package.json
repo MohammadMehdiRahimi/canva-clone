@@ -4,19 +4,22 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "commit": "pnpm exec lint-staged && cz",
+    "commit": "git add . && pnpm exec lint-staged && cz",
     "lint": "pnpm -r run lint",
     "client": "cd apps/client && pnpm run dev",
     "storybook": "cd apps/client && pnpm run storybook",
     "prepare": "husky"
   },
   "devDependencies": {
+    "@types/node": "^20.19.22",
     "commitizen": "^4.3.1",
     "cz-conventional-changelog": "^3.3.0",
     "eslint": "^9.38.0",
     "eslint-plugin-react": "^7.37.5",
     "husky": "^9.1.7",
     "lint-staged": "^16.2.4",
+    "nodemon": "^3.1.10",
+    "ts-node": "^10.9.2",
     "typescript-eslint": "^8.46.1"
   },
   "config": {

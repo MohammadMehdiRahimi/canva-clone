@@ -10,11 +10,6 @@
 
   &.btn-default {
     @apply bg-transparent  text-base-content;
-    @media (hover: hover) {
-      &:hover {
-        @apply bg-base-content;
-      }
-    }
   }
 
   /* brand colors */

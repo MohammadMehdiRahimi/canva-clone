@@ -1,8 +1,7 @@
 @import "tailwindcss";
-@import "../tailwind/components.css";
+@import "../tailwind/components.css" layer(components);
 @import "tw-animate-css";
 
-@custom-variant dark (&:is(.dark *));
 :root {
   /* Base Colors */
   --current: currentColor;
@@ -74,8 +73,6 @@
 
 /* Apply Colors to Tailwind */
 @theme {
-  --color-*: initial;
-
   --color-current: var(--current);
   --color-transparent: var(--transparent);
   --color-black: var(--black);

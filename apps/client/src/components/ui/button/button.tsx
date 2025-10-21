@@ -1,9 +1,9 @@
 import React, { forwardRef } from "react";
 import { ButtonProps } from "./button.types";
 import clsx from "clsx";
-import { sizeClasses } from "../utility/string";
+import { sizeClasses } from "@/components/utility/string";
 import { Loading } from "../loading";
-import { Variants } from "../types/variant.type";
+import { Variants } from "@/components/types/variant.type";
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (
