@@ -8,12 +8,12 @@
     "default": [
       [
         {
-          "name": "api-getway",
+          "name": "api-gateway",
           "autoExecuteCommands": true,
           "icon": "info",
           "color": "terminal.ansiYellow",
           "commands": [
-            "cd apps/server/api-getway"
+            "cd apps/server/api-gateway"
           ]
         },
         {
@@ -70,6 +70,15 @@
           "color": "terminal.ansiRed",
           "commands": [
             "pnpm run storybook"
+          ]
+        },
+        {
+          "name": "icons",
+          "autoExecuteCommands": true,
+          "icon": "package",
+          "color": "terminal.ansiRed",
+          "commands": [
+            "pnpm generate-icons"
           ]
         }
       ],

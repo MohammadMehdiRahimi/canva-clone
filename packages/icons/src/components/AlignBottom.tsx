@@ -1,0 +1,23 @@
+import * as React from "react";
+import type { SVGProps } from "react";
+import { memo } from "react";
+const SvgAlignBottom = (props: SVGProps<SVGSVGElement>) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    role="img"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.5"
+    {...props}
+  >
+    <path
+      d="M8,17H6c-1.657,0-3-1.343-3-3V6c0-1.657,1.343-3,3-3h2c1.657,0,3,1.343,3,3v8 C11,15.657,9.657,17,8,17z"
+      opacity={0.35}
+    />
+    <path d="M18,17h-2c-1.657,0-3-1.343-3-3v-2c0-1.657,1.343-3,3-3h2c1.657,0,3,1.343,3,3v2C21,15.657,19.657,17,18,17z" />
+    <path d="M19.5,22h-15C3.672,22,3,21.328,3,20.5S3.672,19,4.5,19h15c0.828,0,1.5,0.672,1.5,1.5S20.328,22,19.5,22z" />
+  </svg>
+);
+const Memo = memo(SvgAlignBottom);
+export default Memo;

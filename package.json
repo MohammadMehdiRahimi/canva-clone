@@ -6,8 +6,9 @@
   "scripts": {
     "commit": "git add . && pnpm exec lint-staged && cz",
     "lint": "pnpm -r run lint",
-    "client": "cd apps/client && pnpm run dev",
+    "client": "cd apps/client && pnpm run dev --port 3000",
     "storybook": "cd apps/client && pnpm run storybook",
+    "generate-icons": "cd packages/icons && pnpm generate-icons",
     "prepare": "husky"
   },
   "devDependencies": {
@@ -35,8 +36,8 @@
     "apps/client/**/*.{ts,tsx}": [
       "pnpm --filter=client lint:staged"
     ],
-    "apps/server/api-getway/**/*.{ts,tsx,js,jsx}": [
-      "pnpm --filter=api-getway lint:staged"
+    "apps/server/api-gateway/**/*.{ts,tsx,js,jsx}": [
+      "pnpm --filter=api-gateway lint:staged"
     ],
     "apps/server/design-service/**/*.{ts,tsx,js,jsx}": [
       "pnpm --filter=design-servicer lint:staged"

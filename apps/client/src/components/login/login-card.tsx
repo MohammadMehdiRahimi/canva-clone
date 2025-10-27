@@ -1,6 +1,6 @@
 "use client";
 
-import { LogIn } from "lucide-react";
+import { Enter } from "@/canvaClone/icons";
 import { Button } from "@/components/ui/button";
 import { signIn } from "next-auth/react";
 
@@ -19,7 +19,7 @@ function LoginCard() {
           onClick={() => signIn("google", { callbackUrl: "/" })}
         >
           <div className="bg-white rounded-full p-1 flex items-center justify-center group-hover:bg-[#8b3dff]/10 transition-colors duration-300">
-            <LogIn className="w-5 h-5 group-hover:text-[#8b3dff] transition-colors duration-300" />
+            <Enter className="w-5 h-5 group-hover:text-[#8b3dff] transition-colors duration-300" />
           </div>
           <span className="font-medium">Continue with Google</span>
         </Button>

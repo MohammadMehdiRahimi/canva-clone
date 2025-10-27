@@ -1,7 +1,7 @@
 {
   "eslint.workingDirectories": [
     "./apps/client",
-    "./apps/server/api-getway",
+    "./apps/server/api-gateway",
     "./apps/server/design-service",
     "./apps/server/subscription-service",
     "./apps/server/upload-service"

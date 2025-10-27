@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "verbatimModuleSyntax": false,
+
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+
+    "types": ["node"],
+
+    "outDir": "dist",
+    "rootDir": "src",
+    "sourceMap": true
+
+    /* 
+    , "baseUrl": ".",
+    "paths": {
+      "env/*": ["src/env/*"]
+    }
+    */
+  },
+  "include": ["src"]
+}

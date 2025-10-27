@@ -1,0 +1,18 @@
+import * as React from "react";
+import type { SVGProps } from "react";
+import { memo } from "react";
+const SvgTrash = (props: SVGProps<SVGSVGElement>) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 16 16"
+    role="img"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.5"
+    {...props}
+  >
+    <path d="M6.496094 1C5.675781 1 5 1.675781 5 2.496094L5 3L2 3L2 4L3 4L3 12.5C3 13.324219 3.675781 14 4.5 14L10.5 14C11.324219 14 12 13.324219 12 12.5L12 4L13 4L13 3L10 3L10 2.496094C10 1.675781 9.324219 1 8.503906 1 Z M 6.496094 2L8.503906 2C8.785156 2 9 2.214844 9 2.496094L9 3L6 3L6 2.496094C6 2.214844 6.214844 2 6.496094 2 Z M 4 4L11 4L11 12.5C11 12.78125 10.78125 13 10.5 13L4.5 13C4.21875 13 4 12.78125 4 12.5 Z M 5 5L5 12L6 12L6 5 Z M 7 5L7 12L8 12L8 5 Z M 9 5L9 12L10 12L10 5Z" />
+  </svg>
+);
+const Memo = memo(SvgTrash);
+export default Memo;

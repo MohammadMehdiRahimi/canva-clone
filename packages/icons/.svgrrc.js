@@ -1,16 +1,26 @@
 module.exports = {
-  template: require("./scripts/template.js"),
-  icon: true,
+  icon: false,
   typescript: true,
-  filenameCase: "kebab",
+  ref: false,
+  memo: true,
+  expandProps: "end",
   svgProps: {
-    width: "{props.size}",
-    height: "{props.size}",
-    fill: "{props.color}",
+    role: "img",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: "1.5",
   },
   replaceAttrValues: {
-    "#000": "{props.color}",
-    "#fff": "{props.color}",
+    "#000": "currentColor",
+    "#000000": "currentColor",
+    black: "currentColor",
+  },
+  svgo: true,
+  svgoConfig: {
+    plugins: [
+      { name: "removeDimensions", active: true },
+      { name: "removeViewBox", active: false },
+    ],
   },
   outDir: "src/components",
 };

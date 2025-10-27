@@ -1,10 +1,10 @@
 import { FC, ReactNode } from "react";
-import { Size } from "../types/size.type";
+import { Size } from "@/components/types/size.type";
 
 type ModalProps = {
   children: ReactNode;
   open?: boolean;
-  title?: string;
+  title?: string | ReactNode;
   size?: Exclude<Size, "xtiny" | "tiny">;
 };
 type ModalContextType = {

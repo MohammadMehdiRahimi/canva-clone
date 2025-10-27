@@ -8,15 +8,19 @@ import React, {
   useState,
 } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import clsx from "clsx";
+
+// components
 import { Close7, FullScreen } from "@/canvaClone/icons";
+import { Button } from "../button";
+
+//types
 import {
   ModalIntersectProps,
   ModalContextType,
   ModalProps,
   ModalType,
 } from "./modal.types";
-import clsx from "clsx";
-import { Button } from "../button";
 
 /* --------------------------------- context -------------------------------- */
 const ModalContext = createContext<ModalContextType | null>(null);
@@ -78,17 +82,13 @@ const ModalHeader: React.FC<ModalIntersectProps> = ({ className }) => {
       <div className="">{title}</div>
       <div className="flex items-center">
         <Button
-          variant="default"
-          shape="square"
-          size="xtiny"
+          variant="ghost"
           onClick={() => setIsOpen(false)}
         >
           <Close7 size={10} />
         </Button>
         <Button
-          variant="default"
-          shape="square"
-          size="xtiny"
+          variant="ghost"
           onClick={() => setIsFullScreen(!isFullScreen)}
         >
           <FullScreen size={10} />
