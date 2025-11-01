@@ -5,7 +5,7 @@ import cors from "cors";
 import helmet from "helmet";
 
 const env = {
-  PORT: process.env.PORT || 5000,
+  PORT: process.env.PORT || 5003,
   MONGO_URL: process.env.MONGO_URL,
 };
 console.clear();
@@ -21,7 +21,7 @@ async function start() {
     await mongoose.connect(env.MONGO_URL as string);
     console.log("connect to db");
     const server = app.listen(env.PORT, () =>
-      console.log(`api gateway run at http://localhost:${env.PORT}`)
+      console.log(`upload service run at http://localhost:${env.PORT}`)
     );
     server.on("error", (err) => {
       console.log("http server error : " + err);

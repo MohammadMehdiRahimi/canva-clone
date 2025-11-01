@@ -1,6 +1,5 @@
 "use client";
 
-
 // import DesignPreview from "./design-preview";
 
 // import { deleteDesign, getUserDesigns } from "@/services/design-service";
@@ -8,6 +7,8 @@
 import { Loading } from "../ui/loading";
 import { Trash } from "@/canvaClone/icons";
 import { Design } from "./types";
+// import { useEditorStore } from "@/store";
+import DesignPreview from "./design-preview";
 
 type DesignListProps = {
   listOfDesigns: Design[];
@@ -20,24 +21,21 @@ function DesignList({
   isLoading,
   isModalView,
 }: DesignListProps) {
+  // const { setUserDesigns } = useEditorStore();
 
-  // const {
-  //   // setUserDesigns
-  // } = useEditorStore();
+  // async function fetchUserDesigns() {
+  //   // const result = await getUserDesigns();
 
-  //   async function fetchUserDesigns() {
-  //     const result = await getUserDesigns();
+  //   if (result?.success) setUserDesigns(result?.data);
+  // }
 
-  //     if (result?.success) setUserDesigns(result?.data);
+  // const handleDeleteDesign = async (getCurrentDesignId) => {
+  //   const response = await deleteDesign(getCurrentDesignId);
+
+  //   if (response.success) {
+  //     fetchUserDesigns();
   //   }
-
-  //   const handleDeleteDesign = async (getCurrentDesignId) => {
-  //     const response = await deleteDesign(getCurrentDesignId);
-
-  //     if (response.success) {
-  //       fetchUserDesigns();
-  //     }
-  //   };
+  // };
 
   if (isLoading) return <Loading />;
 
@@ -57,9 +55,9 @@ function DesignList({
             // }}
             className="w-[300px] h-[300px] rounded-lg mb-2 overflow-hidden transition-shadow group-hover:shadow-md"
           >
-            {/* {design?.canvasData && ( */}
-            {/* <DesignPreview key={design._id} design={design} />
-             )} */}
+            {design?.canvasData && (
+              <DesignPreview key={design._id} design={design} />
+            )}
           </div>
           <div className="flex justify-between">
             <p className="font-bold text-sm truncate">{design.name}</p>

@@ -13,12 +13,12 @@ function LoginCard() {
           <p className="mt-3 text-gray-500">Sign in to continue to Canva</p>
         </div>
         <Button
-          className={`w-full flex items-center justify-center gap-3 py-6 text-gray-700 border-gray-300 
-            hover:border-[#8b3dff] hover:text-[#8b3dff] transition-all duration-300 group transform hover:scale-[1.01] active:scale-[0.99]
+          className={`bg-white border w-full flex items-center justify-center gap-3 py-6 text-gray-700 border-gray-300 
+            hover:border-[#8b3dff] hover:text-[#8b3dff] transition-all duration-300 group transform hover:scale-[1.01] active:scale-[0.99] hover:bg-white cursor-pointer
             `}
           onClick={() => signIn("google", { callbackUrl: "/" })}
         >
-          <div className="bg-white rounded-full p-1 flex items-center justify-center group-hover:bg-[#8b3dff]/10 transition-colors duration-300">
+          <div className=" rounded-full p-1 flex items-center justify-center  transition-colors duration-300">
             <Enter className="w-5 h-5 group-hover:text-[#8b3dff] transition-colors duration-300" />
           </div>
           <span className="font-medium">Continue with Google</span>
